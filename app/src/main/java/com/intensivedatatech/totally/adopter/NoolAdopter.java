@@ -1,6 +1,7 @@
 package com.intensivedatatech.totally.adopter;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -12,10 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.intensivedatatech.totally.R;
+import com.intensivedatatech.totally.UpdatenoolActivity;
 import com.intensivedatatech.totally.helper.DatabaseHelper;
 import com.intensivedatatech.totally.model.NoolModel;
 
@@ -40,13 +44,41 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         db = new DatabaseHelper(viewHolder.whitequantity.getContext());
         try {
-            viewHolder.whitequantity.setText("White Quantity: " + String.valueOf(data.get(i).getWhitequantity()));
-            viewHolder.whiteprice.setText("White Price: " + String.valueOf(data.get(i).getWhiteprice()));
-            viewHolder.colorquantity.setText("Color Quantity: " + String.valueOf(data.get(i).getColorquantity()));
-            viewHolder.colorprice.setText("Color Price: " + String.valueOf(data.get(i).getColorprice()));
-            viewHolder.totalprice.setText("Total Price: " + String.valueOf(data.get(i).getTotalprice()));
+            viewHolder.whitequantity.setText("WQ: " + String.valueOf(data.get(i).getWhitequantity()));
+            viewHolder.whiteprice.setText("WP: " + String.valueOf(data.get(i).getWhiteprice()));
+            viewHolder.colorquantity.setText("CQ: " + String.valueOf(data.get(i).getColorquantity()));
+            viewHolder.colorprice.setText("CP: " + String.valueOf(data.get(i).getColorprice()));
+            viewHolder.totalprice.setText("TP: " + String.valueOf(data.get(i).getTotalprice()));
+            viewHolder.totalw.setText("totalw: "+String.valueOf(data.get(i).getTotalwhiteprice()));
+            viewHolder.totalc.setText("totalc: "+String.valueOf(data.get(i).getTotalcottonprice()));
+            viewHolder.matwp.setText("matwp: "+String.valueOf(data.get(i).getCottonmatprice()));
+            viewHolder.matwq.setText("matwq: "+String.valueOf(data.get(i).getCottonmatquantity()));
+            viewHolder.matcq.setText("matcq: "+String.valueOf(data.get(i).getColormatquantity()));
+            viewHolder.matcp.setText("matcp: "+String.valueOf(data.get(i).getColormatprice()));
+            viewHolder.mattotalw.setText("mattotalw: "+String.valueOf(data.get(i).getCottonmattotalprice()));
+            viewHolder.mattotalc.setText("mattotalc: "+String.valueOf(data.get(i).getColormattotalprice()));
             viewHolder.paid.setText("Paid: " + String.valueOf(data.get(i).getPaid()));
-            viewHolder.date.setText("Date: " + data.get(i).getDate());
+            viewHolder.date.setText(data.get(i).getDate());
+            float twp=data.get(i).getTotalwhiteprice()-data.get(i).getCottonmattotalprice();
+            float mtw=data.get(i).getTotalcottonprice()-data.get(i).getColormattotalprice();
+            viewHolder.total1.setText(String.valueOf(twp));
+            viewHolder.total2.setText(String.valueOf(mtw));
+//            float temps=twp-mtw;
+//            viewHolder.m1.setText(String.valueOf(temps));
+//            float tcp=data.get(i).getTotalwhiteprice();
+//            float mtc=data.get(i).getColormattotalprice();
+//            float tem1=tcp-mtc;
+//            viewHolder.m2.setText(String.valueOf(tem1));
+            float tep1,tep2,mtot1,mtot2;
+            tep1=data.get(i).getEntryprice1();
+            tep2=data.get(i).getEntryprice2();
+            viewHolder.ep1.setText(String.valueOf(tep1));
+            viewHolder.ep2.setText(String.valueOf(tep2));
+            mtot1=Math.abs(twp)+ tep1;
+            mtot2=Math.abs(mtw)+ tep2;
+            viewHolder.m1.setText(String.valueOf(mtot1));
+            viewHolder.m2.setText(String.valueOf(mtot2));
+            viewHolder.des.setText(data.get(i).getDescription());
             try {
                 float a, b, cr;
                 a = data.get(i).getTotalprice();
@@ -80,11 +112,19 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView whitequantity, whiteprice, colorquantity, colorprice, totalprice, paid, pid, notpaid, date;
-        Button btn;
+        TextView whitequantity, whiteprice, colorquantity, colorprice, totalprice, paid, pid, notpaid, date, totalw, totalc, matwp, matwq, matcp, matcq, mattotalw, mattotalc,total1,total2,ep1,ep2,m1,m2,des;
+        ImageView edt, del;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            total1=itemView.findViewById(R.id.nool_total1);
+            total2=itemView.findViewById(R.id.nool_total2);
+            ep1=itemView.findViewById(R.id.nool_ep1);
+            ep2=itemView.findViewById(R.id.nool_ep2);
+            m1=itemView.findViewById(R.id.nool_m1);
+            m2=itemView.findViewById(R.id.nool_m2);
+            des=itemView.findViewById(R.id.nool_des);
+
             whitequantity = itemView.findViewById(R.id.nool_wq);
             whiteprice = itemView.findViewById(R.id.nool_wp);
             colorquantity = itemView.findViewById(R.id.nool_cq);
@@ -94,8 +134,27 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
             pid = itemView.findViewById(R.id.nool_pid);
             date = itemView.findViewById(R.id.nool_date);
             notpaid = itemView.findViewById(R.id.nool_notpaid);
-            btn = itemView.findViewById(R.id.nool_del);
-            btn.setOnClickListener(new View.OnClickListener() {
+
+            edt = itemView.findViewById(R.id.nool_edit);
+            del = itemView.findViewById(R.id.nool_del);
+            totalw=itemView.findViewById(R.id.nooltotalw);
+            totalc=itemView.findViewById(R.id.nooltotalc);
+            matwp=itemView.findViewById(R.id.noolmatwp);
+            matwq=itemView.findViewById(R.id.noolmatwq);
+            matcp=itemView.findViewById(R.id.noolmatcp);
+            matcq=itemView.findViewById(R.id.noolmatcq);
+            mattotalw=itemView.findViewById(R.id.noolmattotalw);
+            mattotalc=itemView.findViewById(R.id.noolmattotalc);
+
+            edt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(v.getContext(), UpdatenoolActivity.class);
+                    intent.putExtra("mid",data.get(getLayoutPosition()).getId());
+                    v.getContext().startActivity(intent);
+                }
+            });
+            del.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
@@ -115,6 +174,7 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
                     alert.show();
                 }
             });
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View v) {
@@ -142,6 +202,7 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
                                 if (b) {
                                     Log.d("nool", "paid");
                                     Toast.makeText(v.getContext(), "Updated", Toast.LENGTH_LONG).show();
+                                    paid.setText(String.valueOf(m_Text));
                                 } else {
                                     Log.d("nool", "not paid");
                                     Toast.makeText(v.getContext(), "Not Updated", Toast.LENGTH_LONG).show();
@@ -151,6 +212,7 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
                             }
                         }
                     });
+
                     builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -168,11 +230,11 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
     public void removeAt(int position) {
 
         try {
-            boolean tt=db.deletenool(data.get(position).getId());
-            if(tt){
-                Log.d("delnool","working");
-            }else{
-                Log.d("delnool","not working");
+            boolean tt = db.deletenool(data.get(position).getId());
+            if (tt) {
+                Log.d("delnool", "working");
+            } else {
+                Log.d("delnool", "not working");
             }
         } catch (Exception t) {
             t.printStackTrace();

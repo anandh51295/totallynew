@@ -25,15 +25,15 @@ import java.util.List;
 
 public class AddnoolActivity extends AppCompatActivity {
     DatabaseHelper db;
-    EditText ed1, ed2, ed3, ed4,ed5,ed6,ed7,ed8,ed9;
+    EditText ed1, ed2, ed3, ed4,ed5,ed6,ed7,ed8,ed9,ed10,ed11;
     TextView dates;
     Button btn;
     Spinner spinner;
     int pid;
     List<String> uId = new ArrayList<String>();
     List<String> uname = new ArrayList<String>();
-    String whiteprice, colorprice,whitequantity, colorquantity,cottonmatquantity,cottonmatprice,cottnmattotalprice,colormatquantity,colormatprice,colormattotalprice,description;
-    float totalprice;
+    String whiteprice, colorprice,whitequantity, colorquantity,cottonmatquantity,cottonmatprice,cottnmattotalprice,colormatquantity,colormatprice,colormattotalprice,description,entryprice1,entryprice2;
+    float totalprice,totalwhiteprice,totalcolorprice;
     String sdateneed;
 
     @Override
@@ -50,6 +50,8 @@ public class AddnoolActivity extends AppCompatActivity {
         ed7=findViewById(R.id.ncclmq);
         ed8=findViewById(R.id.ncclmp);
         ed9=findViewById(R.id.ncdesc);
+        ed10=findViewById(R.id.ncep1);
+        ed11=findViewById(R.id.ncep2);
         btn = findViewById(R.id.noolbutton);
         dates = findViewById(R.id.n_date);
         dates.setOnClickListener(new View.OnClickListener() {
@@ -112,19 +114,45 @@ public class AddnoolActivity extends AppCompatActivity {
                     colormatquantity=ed7.getText().toString();
                     colormatprice=ed8.getText().toString();
                     description=ed9.getText().toString();
+                    entryprice1=ed10.getText().toString();
+                    entryprice2=ed11.getText().toString();
 
-                    if(!whitequantity.isEmpty()&&!whiteprice.isEmpty()&&!colorquantity.isEmpty()&&!colorprice.isEmpty()){
-                        int wq,cq;
-                        float wp,cp,t1,t2;
+                    if(!whitequantity.isEmpty()&&!whiteprice.isEmpty()&&!colorquantity.isEmpty()&&!colorprice.isEmpty()&&!cottonmatquantity.isEmpty()&&!cottonmatprice.isEmpty()&&!colormatquantity.isEmpty()&&!colormatprice.isEmpty()&&!entryprice1.isEmpty()&&!entryprice2.isEmpty()){
+                        int wq,cq,wmateq,cmateq;
+                        float wp,cp,t1,t2,wmatep,cmatep,twmatep,tcmatep,ftprice,sndprice,ftfinalprice,sndfinalprice,fep1,fep2;
                         wq=Integer.parseInt(whitequantity);
-                        cq=Integer.parseInt(whiteprice);
+                        cq=Integer.parseInt(colorquantity);
                         wp=Float.parseFloat(whiteprice);
                         cp=Float.parseFloat(colorprice);
+                        wmateq=Integer.parseInt(cottonmatquantity);
+                        wmatep=Float.parseFloat(cottonmatprice);
+                        cmateq=Integer.parseInt(colormatquantity);
+                        cmatep=Float.parseFloat(colormatprice);
+                        fep1=Float.parseFloat(entryprice1);
+                        fep2=Float.parseFloat(entryprice2);
+                        if(description.isEmpty()){
+                            description="no data";
+                        }
                         t1=wq*wp;
                         t2=cq*cp;
-                        totalprice=t1+t2;
-//                        boolean fl=db.insertnool(pid,wq,wp,cq,cp,totalprice,0,sdateneed);
-                        boolean fl=true;
+                        twmatep=wmateq*wmatep;
+                        tcmatep=cmateq*cmatep;
+
+                        ftprice=t1-twmatep;
+                        sndprice=t2-tcmatep;
+
+                        ftfinalprice=Math.abs(ftprice)+fep1;
+                        sndfinalprice=Math.abs(sndprice)+fep2;
+
+                        totalprice=ftfinalprice+sndfinalprice;
+
+//                        totalprice=t1+t2;
+                        totalwhiteprice=t1;
+                        totalcolorprice=t2;
+
+
+                        boolean fl=db.insertnool(pid,wq,wp,cq,cp,totalprice,0,sdateneed,wmateq,wmatep,twmatep,cmateq,cmatep,tcmatep,description,fep1,fep2,totalwhiteprice,totalcolorprice);
+//                        boolean fl=true;
                         if(fl){
                             finish();
                             Log.d("nool","inserted");

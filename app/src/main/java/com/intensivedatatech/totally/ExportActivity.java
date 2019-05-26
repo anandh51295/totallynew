@@ -53,7 +53,7 @@ public class ExportActivity extends AppCompatActivity {
             }
         } else {
             exp();
-            exp1();
+//            exp1();
             exp2();
         }
     }
@@ -68,7 +68,7 @@ public class ExportActivity extends AppCompatActivity {
 
         if (requestCode == FILE_PICKER_REQUEST_CODE && resultCode == RESULT_OK) {
             exp();
-            exp1();
+//            exp1();
             exp2();
 
         }
@@ -103,34 +103,34 @@ public class ExportActivity extends AppCompatActivity {
 
     }
 
-    public boolean exp1() {
-
-        File exportDir = new File(Environment.getExternalStorageDirectory(), "/totally/");
-        if (!exportDir.exists()) { exportDir.mkdirs(); }
-
-        File file = new File(exportDir, "matdetails.csv");
-        try {
-            file.createNewFile();
-            CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
-            Cursor curCSV = db.raw1();
-            csvWrite.writeNext(curCSV.getColumnNames());
-            while(curCSV.moveToNext()) {
-                String arrStr[]=null;
-                String[] mySecondStringArray = new String[curCSV.getColumnNames().length];
-                for(int i=0;i<curCSV.getColumnNames().length;i++)
-                {
-                    mySecondStringArray[i] =curCSV.getString(i);
-                }
-                csvWrite.writeNext(mySecondStringArray);
-            }
-            csvWrite.close();
-            curCSV.close();
-            return true;
-        } catch (IOException e) {
-            return false;
-        }
-
-    }
+//    public boolean exp1() {
+//
+//        File exportDir = new File(Environment.getExternalStorageDirectory(), "/totally/");
+//        if (!exportDir.exists()) { exportDir.mkdirs(); }
+//
+//        File file = new File(exportDir, "matdetails.csv");
+//        try {
+//            file.createNewFile();
+//            CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
+//            Cursor curCSV = db.raw1();
+//            csvWrite.writeNext(curCSV.getColumnNames());
+//            while(curCSV.moveToNext()) {
+//                String arrStr[]=null;
+//                String[] mySecondStringArray = new String[curCSV.getColumnNames().length];
+//                for(int i=0;i<curCSV.getColumnNames().length;i++)
+//                {
+//                    mySecondStringArray[i] =curCSV.getString(i);
+//                }
+//                csvWrite.writeNext(mySecondStringArray);
+//            }
+//            csvWrite.close();
+//            curCSV.close();
+//            return true;
+//        } catch (IOException e) {
+//            return false;
+//        }
+//
+//    }
 
     public boolean exp2() {
 

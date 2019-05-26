@@ -30,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
         cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MatActivity.class);
+//                Intent intent = new Intent(MainActivity.this, MatActivity.class);
+//                startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, GroupActivity.class);
                 startActivity(intent);
             }
         });
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NoolActivity.class);
+                intent.putExtra("type", "new");
+                intent.putExtra("id", 0);
                 startActivity(intent);
             }
         });
