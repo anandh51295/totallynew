@@ -176,8 +176,8 @@ public class UpdatenoolActivity extends AppCompatActivity {
                         ftprice = t1 - twmatep;
                         sndprice = t2 - tcmatep;
 
-                        ftfinalprice = ftprice + fep1;
-                        sndfinalprice = sndprice + fep2;
+                        ftfinalprice = Math.abs(ftprice) + fep1;
+                        sndfinalprice = Math.abs(sndprice) + fep2;
 
                         totalprice = ftfinalprice + sndfinalprice;
 
