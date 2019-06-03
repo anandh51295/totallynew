@@ -278,12 +278,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="76dp"
             android:layout_marginBottom="24dp"
             android:text="m1"
             card_view:layout_constraintBottom_toTopOf="@+id/nool_m2"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.528"
+            card_view:layout_constraintHorizontal_bias="0.82"
             card_view:layout_constraintStart_toEndOf="@+id/nool_ep1" />
 
         <TextView

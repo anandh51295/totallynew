@@ -61,8 +61,8 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
             viewHolder.date.setText(data.get(i).getDate());
             float twp=data.get(i).getTotalwhiteprice()-data.get(i).getCottonmattotalprice();
             float mtw=data.get(i).getTotalcottonprice()-data.get(i).getColormattotalprice();
-            viewHolder.total1.setText(String.valueOf(twp));
-            viewHolder.total2.setText(String.valueOf(mtw));
+            viewHolder.total1.setText("t1: "+String.valueOf(twp));
+            viewHolder.total2.setText("t2: "+String.valueOf(mtw));
 //            float temps=twp-mtw;
 //            viewHolder.m1.setText(String.valueOf(temps));
 //            float tcp=data.get(i).getTotalwhiteprice();
@@ -72,12 +72,12 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
             float tep1,tep2,mtot1,mtot2;
             tep1=data.get(i).getEntryprice1();
             tep2=data.get(i).getEntryprice2();
-            viewHolder.ep1.setText(String.valueOf(tep1));
-            viewHolder.ep2.setText(String.valueOf(tep2));
+            viewHolder.ep1.setText("பாக்கி1: "+String.valueOf(tep1));
+            viewHolder.ep2.setText("பாக்கி2: "+String.valueOf(tep2));
             mtot1=Math.abs(twp)+ tep1;
             mtot2=Math.abs(mtw)+ tep2;
-            viewHolder.m1.setText(String.valueOf(mtot1));
-            viewHolder.m2.setText(String.valueOf(mtot2));
+            viewHolder.m1.setText("FTP1: "+String.valueOf(mtot1));
+            viewHolder.m2.setText("FTP2: "+String.valueOf(mtot2));
             viewHolder.des.setText(data.get(i).getDescription());
             try {
                 float a, b, cr;
