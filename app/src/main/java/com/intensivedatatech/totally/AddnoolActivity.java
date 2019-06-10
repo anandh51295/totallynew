@@ -118,15 +118,15 @@ public class AddnoolActivity extends AppCompatActivity {
                     entryprice2=ed11.getText().toString();
 
                     if(!whitequantity.isEmpty()&&!whiteprice.isEmpty()&&!colorquantity.isEmpty()&&!colorprice.isEmpty()&&!cottonmatquantity.isEmpty()&&!cottonmatprice.isEmpty()&&!colormatquantity.isEmpty()&&!colormatprice.isEmpty()&&!entryprice1.isEmpty()&&!entryprice2.isEmpty()){
-                        int wq,cq,wmateq,cmateq;
+                        float wq,cq,wmateq,cmateq;
                         float wp,cp,t1,t2,wmatep,cmatep,twmatep,tcmatep,ftprice,sndprice,ftfinalprice,sndfinalprice,fep1,fep2;
-                        wq=Integer.parseInt(whitequantity);
-                        cq=Integer.parseInt(colorquantity);
+                        wq=Float.parseFloat(whitequantity);
+                        cq=Float.parseFloat(colorquantity);
                         wp=Float.parseFloat(whiteprice);
                         cp=Float.parseFloat(colorprice);
-                        wmateq=Integer.parseInt(cottonmatquantity);
+                        wmateq=Float.parseFloat(cottonmatquantity);
                         wmatep=Float.parseFloat(cottonmatprice);
-                        cmateq=Integer.parseInt(colormatquantity);
+                        cmateq=Float.parseFloat(colormatquantity);
                         cmatep=Float.parseFloat(colormatprice);
                         fep1=Float.parseFloat(entryprice1);
                         fep2=Float.parseFloat(entryprice2);

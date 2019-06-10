@@ -67,14 +67,14 @@ public class NoolActivity extends AppCompatActivity {
 
                 Cursor cursor = db.getnoolbyid(String.valueOf(ids));
                 while (cursor.moveToNext()) {
-                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getFloat(3), cursor.getInt(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getString(8), cursor.getInt(9), cursor.getFloat(10), cursor.getFloat(11), cursor.getInt(12), cursor.getFloat(13), cursor.getFloat(14), cursor.getString(15), cursor.getFloat(16), cursor.getFloat(17), cursor.getFloat(18), cursor.getFloat(19));
+                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getFloat(2), cursor.getFloat(3), cursor.getFloat(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getString(8), cursor.getFloat(9), cursor.getFloat(10), cursor.getFloat(11), cursor.getFloat(12), cursor.getFloat(13), cursor.getFloat(14), cursor.getString(15), cursor.getFloat(16), cursor.getFloat(17), cursor.getFloat(18), cursor.getFloat(19));
                     data.add(ndata);
 
                 }
             } else {
                 Cursor cursor = db.getnool();
                 while (cursor.moveToNext()) {
-                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getFloat(3), cursor.getInt(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getString(8), cursor.getInt(9), cursor.getFloat(10), cursor.getFloat(11), cursor.getInt(12), cursor.getFloat(13), cursor.getFloat(14), cursor.getString(15), cursor.getFloat(16), cursor.getFloat(17), cursor.getFloat(18), cursor.getFloat(19));
+                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getFloat(2), cursor.getFloat(3), cursor.getFloat(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getString(8), cursor.getFloat(9), cursor.getFloat(10), cursor.getFloat(11), cursor.getFloat(12), cursor.getFloat(13), cursor.getFloat(14), cursor.getString(15), cursor.getFloat(16), cursor.getFloat(17), cursor.getFloat(18), cursor.getFloat(19));
                     data.add(ndata);
 
                 }
@@ -100,14 +100,14 @@ public class NoolActivity extends AppCompatActivity {
             if (types.equals("update")) {
                 Cursor cursor = db.getnoolbyid(String.valueOf(ids));
                 while (cursor.moveToNext()) {
-                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getFloat(3), cursor.getInt(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getString(8), cursor.getInt(9), cursor.getFloat(10), cursor.getFloat(11), cursor.getInt(12), cursor.getFloat(13), cursor.getFloat(14), cursor.getString(15), cursor.getFloat(16), cursor.getFloat(17), cursor.getFloat(18), cursor.getFloat(19));
+                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getFloat(2), cursor.getFloat(3), cursor.getFloat(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getString(8), cursor.getFloat(9), cursor.getFloat(10), cursor.getFloat(11), cursor.getFloat(12), cursor.getFloat(13), cursor.getFloat(14), cursor.getString(15), cursor.getFloat(16), cursor.getFloat(17), cursor.getFloat(18), cursor.getFloat(19));
                     data.add(ndata);
 
                 }
             } else {
                 Cursor cursor = db.getnool();
                 while (cursor.moveToNext()) {
-                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getFloat(3), cursor.getInt(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getString(8), cursor.getInt(9), cursor.getFloat(10), cursor.getFloat(11), cursor.getInt(12), cursor.getFloat(13), cursor.getFloat(14), cursor.getString(15), cursor.getFloat(16), cursor.getFloat(17), cursor.getFloat(18), cursor.getFloat(19));
+                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getFloat(2), cursor.getFloat(3), cursor.getFloat(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getString(8), cursor.getFloat(9), cursor.getFloat(10), cursor.getFloat(11), cursor.getFloat(12), cursor.getFloat(13), cursor.getFloat(14), cursor.getString(15), cursor.getFloat(16), cursor.getFloat(17), cursor.getFloat(18), cursor.getFloat(19));
                     data.add(ndata);
 
                 }

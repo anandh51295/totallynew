@@ -29,7 +29,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="வெள்ளை நூல் அளவு"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noolspinner" />
@@ -57,7 +57,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="கலர் நூல் அளவு"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nwprice" />
@@ -85,7 +85,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="வெள்ளை மேட் அளவு"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ncprice" />
@@ -113,7 +113,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint=" கலர் மேட் அளவு"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nccmp" />

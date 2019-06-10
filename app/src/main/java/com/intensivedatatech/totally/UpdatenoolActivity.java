@@ -67,7 +67,7 @@ public class UpdatenoolActivity extends AppCompatActivity {
 //                ndata.setName(cursor.getString(1));
 //                ndata.setAddress(cursor.getString(2));
 //                ndata.setNumber(cursor.getString(3));
-                ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getFloat(3), cursor.getInt(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getString(8), cursor.getInt(9),cursor.getFloat(10),cursor.getFloat(11),cursor.getInt(12),cursor.getFloat(13),cursor.getFloat(14),cursor.getString(15),cursor.getFloat(16),cursor.getFloat(17),cursor.getFloat(18),cursor.getFloat(19));
+                ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getFloat(2), cursor.getFloat(3), cursor.getFloat(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getString(8), cursor.getFloat(9),cursor.getFloat(10),cursor.getFloat(11),cursor.getFloat(12),cursor.getFloat(13),cursor.getFloat(14),cursor.getString(15),cursor.getFloat(16),cursor.getFloat(17),cursor.getFloat(18),cursor.getFloat(19));
                 nid=ndata.getId();
                 pid=ndata.getPid();
                 ed1.setText(String.valueOf(ndata.getWhitequantity()));
@@ -153,15 +153,15 @@ public class UpdatenoolActivity extends AppCompatActivity {
                     entryprice2 = ed11.getText().toString();
 
                     if (!whitequantity.isEmpty() && !whiteprice.isEmpty() && !colorquantity.isEmpty() && !colorprice.isEmpty() && !cottonmatquantity.isEmpty() && !cottonmatprice.isEmpty() && !colormatquantity.isEmpty() && !colormatprice.isEmpty() && !entryprice1.isEmpty() && !entryprice2.isEmpty()) {
-                        int wq, cq, wmateq, cmateq;
+                        float wq, cq, wmateq, cmateq;
                         float wp, cp, t1, t2, wmatep, cmatep, twmatep, tcmatep, ftprice, sndprice, ftfinalprice, sndfinalprice, fep1, fep2;
-                        wq = Integer.parseInt(whitequantity);
-                        cq = Integer.parseInt(colorquantity);
+                        wq = Float.parseFloat(whitequantity);
+                        cq = Float.parseFloat(colorquantity);
                         wp = Float.parseFloat(whiteprice);
                         cp = Float.parseFloat(colorprice);
-                        wmateq = Integer.parseInt(cottonmatquantity);
+                        wmateq = Float.parseFloat(cottonmatquantity);
                         wmatep = Float.parseFloat(cottonmatprice);
-                        cmateq = Integer.parseInt(colormatquantity);
+                        cmateq = Float.parseFloat(colormatquantity);
                         cmatep = Float.parseFloat(colormatprice);
                         fep1 = Float.parseFloat(entryprice1);
                         fep2 = Float.parseFloat(entryprice2);

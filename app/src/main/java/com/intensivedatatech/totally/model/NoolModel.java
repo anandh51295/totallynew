@@ -9,11 +9,11 @@ public class NoolModel {
     @SerializedName("p_id")
     int pid;
     @SerializedName("whitequantity")
-    int whitequantity;
+    float whitequantity;
     @SerializedName("whiteprice")
     float whiteprice;
     @SerializedName("colorquantity")
-    int colorquantity;
+    float colorquantity;
     @SerializedName("colorprice")
     float colorprice;
     @SerializedName("totalprice")
@@ -24,13 +24,13 @@ public class NoolModel {
     String date;
 
     @SerializedName("cottonmatquantity")
-    int cottonmatquantity;
+    float cottonmatquantity;
     @SerializedName("cottomnatprice")
     float cottonmatprice;
     @SerializedName("cottonmattotalprice")
     float cottonmattotalprice;
     @SerializedName("colormatquantity")
-    int colormatquantity;
+    float colormatquantity;
     @SerializedName("colormatprice")
     float colormatprice;
     @SerializedName("colormattotalprice")
@@ -47,7 +47,7 @@ public class NoolModel {
     float totalwhiteprice;
 
 
-    public NoolModel(int id, int pid, int whitequantity, float whiteprice, int colorquantity, float colorprice, float totalprice, float paid,String date,int cottonmatquantity,float cottonmatprice,float cottonmattotalprice,int colormatquantity,float colormatprice,float colormattotalprice,String description,float entryprice1,float entryprice2,float totalcottonprice,float totalwhiteprice){
+    public NoolModel(int id, int pid, float whitequantity, float whiteprice, float colorquantity, float colorprice, float totalprice, float paid,String date,float cottonmatquantity,float cottonmatprice,float cottonmattotalprice,float colormatquantity,float colormatprice,float colormattotalprice,String description,float entryprice1,float entryprice2,float totalcottonprice,float totalwhiteprice){
         this.id=id;
         this.pid=pid;
         this.whitequantity=whitequantity;
@@ -85,8 +85,36 @@ public class NoolModel {
         this.pid = pid;
     }
 
-    public int getWhitequantity() {
+    public float getWhitequantity() {
         return whitequantity;
+    }
+
+    public void setWhitequantity(float whitequantity) {
+        this.whitequantity = whitequantity;
+    }
+
+    public float getColorquantity() {
+        return colorquantity;
+    }
+
+    public void setColorquantity(float colorquantity) {
+        this.colorquantity = colorquantity;
+    }
+
+    public float getCottonmatquantity() {
+        return cottonmatquantity;
+    }
+
+    public void setCottonmatquantity(float cottonmatquantity) {
+        this.cottonmatquantity = cottonmatquantity;
+    }
+
+    public float getColormatquantity() {
+        return colormatquantity;
+    }
+
+    public void setColormatquantity(float colormatquantity) {
+        this.colormatquantity = colormatquantity;
     }
 
     public void setWhitequantity(int whitequantity) {
@@ -101,9 +129,7 @@ public class NoolModel {
         this.whiteprice = whiteprice;
     }
 
-    public int getColorquantity() {
-        return colorquantity;
-    }
+
 
     public void setColorquantity(int colorquantity) {
         this.colorquantity = colorquantity;
@@ -142,9 +168,7 @@ public class NoolModel {
     }
 
 
-    public int getCottonmatquantity() {
-        return cottonmatquantity;
-    }
+
 
     public void setCottonmatquantity(int cottonmatquantity) {
         this.cottonmatquantity = cottonmatquantity;
@@ -166,9 +190,7 @@ public class NoolModel {
         this.cottonmattotalprice = cottonmattotalprice;
     }
 
-    public int getColormatquantity() {
-        return colormatquantity;
-    }
+
 
     public void setColormatquantity(int colormatquantity) {
         this.colormatquantity = colormatquantity;

@@ -55,8 +55,8 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
             viewHolder.matwq.setText("matwq: "+String.valueOf(data.get(i).getCottonmatquantity()));
             viewHolder.matcq.setText("matcq: "+String.valueOf(data.get(i).getColormatquantity()));
             viewHolder.matcp.setText("matcp: "+String.valueOf(data.get(i).getColormatprice()));
-            viewHolder.mattotalw.setText("mattotalw: "+String.valueOf(data.get(i).getCottonmattotalprice()));
-            viewHolder.mattotalc.setText("mattotalc: "+String.valueOf(data.get(i).getColormattotalprice()));
+            viewHolder.mattotalw.setText("mtotalw: "+String.valueOf(data.get(i).getCottonmattotalprice()));
+            viewHolder.mattotalc.setText("mtotalc: "+String.valueOf(data.get(i).getColormattotalprice()));
             viewHolder.paid.setText("Paid: " + String.valueOf(data.get(i).getPaid()));
             viewHolder.date.setText(data.get(i).getDate());
             float twp=data.get(i).getTotalwhiteprice()-data.get(i).getCottonmattotalprice();
@@ -203,6 +203,20 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
                                     Log.d("nool", "paid");
                                     Toast.makeText(v.getContext(), "Updated", Toast.LENGTH_LONG).show();
                                     paid.setText(String.valueOf(m_Text));
+//                                    try {
+//                                        Float tmv,tmp;
+//                                        tmv=Float.parseFloat(totalprice.getText().toString());
+//                                        if (m_Text > 0) {
+//                                            tmp=tmv - m_Text;
+//                                            notpaid.setText("Not Paid:" + String.valueOf(tmp));
+//                                        } else {
+//                                            Log.d("balance", "not working");
+//                                        }
+//                                    } catch (Exception r) {
+//                                        r.printStackTrace();
+//                                    }
+
+
                                 } else {
                                     Log.d("nool", "not paid");
                                     Toast.makeText(v.getContext(), "Not Updated", Toast.LENGTH_LONG).show();

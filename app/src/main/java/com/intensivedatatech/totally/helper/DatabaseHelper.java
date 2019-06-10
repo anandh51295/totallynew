@@ -53,7 +53,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY,NAME VARACHAR,ADDRESS VARCHAR, MOBILE VARCHAR)");
 //        db.execSQL("create table " + TABLE2_NAME + " (ID INTEGER PRIMARY KEY,NAME_ADDRESS VARACHAR,QUANTITY INTEGER, PRICE FLOAT,TOTALPRICE FLOAT,DATE VARCHAR)");
-        db.execSQL("create table " + TABLE3_NAME + " (ID INTEGER PRIMARY KEY,P_ID INTEGER,COTTONQUANTITY INTEGER, COTTONPRICE FLOAT,COLORQUANTITY INTEGER,COLORPRICE FLOAT,TOTALPRICE FLOAT,PAID FLOAT,DATE VARCHAR,COTTONMATQUANTITY INTEGER,COTTONMATPRICE FLOAT,COTTONMATTOTALPRICE FLOAT,COLORMATQUANTITY INTEGER,COLORMATPRICE FLOAT,COLORMATTOTALPRICE FLOAT,DESCRIPTION VARCHAR,ENTRYPRICE1 FLOAT,ENTRYPRICE2 FLOAT,TOTALCOLORPRICE FLOAT,TOTALCOTTONPRICE FLOAT)");
+        db.execSQL("create table " + TABLE3_NAME + " (ID INTEGER PRIMARY KEY,P_ID INTEGER,COTTONQUANTITY FLOAT, COTTONPRICE FLOAT,COLORQUANTITY FLOAT,COLORPRICE FLOAT,TOTALPRICE FLOAT,PAID FLOAT,DATE VARCHAR,COTTONMATQUANTITY FLOAT,COTTONMATPRICE FLOAT,COTTONMATTOTALPRICE FLOAT,COLORMATQUANTITY FLOAT,COLORMATPRICE FLOAT,COLORMATTOTALPRICE FLOAT,DESCRIPTION VARCHAR,ENTRYPRICE1 FLOAT,ENTRYPRICE2 FLOAT,TOTALCOLORPRICE FLOAT,TOTALCOTTONPRICE FLOAT)");
     }
 
     @Override
@@ -144,7 +144,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean changenool(int id,int p_id,int whitequantity,float whiteprice,int colorquantity,float colorprice,float totalprice,float paid,String date,int cottonmatquantity,float cottonmatprice,float cottonmattotalprice,int colormatquantity,float colormatprice,float colormattotalprice,String details,float entryprice1,float entryprice2, float totalcottonprice, float totalcolorprice) {
+    public boolean changenool(int id,float p_id,float whitequantity,float whiteprice,float colorquantity,float colorprice,float totalprice,float paid,String date,float cottonmatquantity,float cottonmatprice,float cottonmattotalprice,float colormatquantity,float colormatprice,float colormattotalprice,String details,float entryprice1,float entryprice2, float totalcottonprice, float totalcolorprice) {
 
         SQLiteDatabase database = this.getReadableDatabase();
         try {
@@ -191,7 +191,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean insertnool(int p_id,int whitequantity,float whiteprice,int colorquantity,float colorprice,float totalprice,float paid,String date,int cottonmatquantity,float cottonmatprice,float cottonmattotalprice,int colormatquantity,float colormatprice,float colormattotalprice,String details,float entryprice1,float entryprice2, float totalcottonprice, float totalcolorprice) {
+    public boolean insertnool(int p_id,float whitequantity,float whiteprice,float colorquantity,float colorprice,float totalprice,float paid,String date,float cottonmatquantity,float cottonmatprice,float cottonmattotalprice,float colormatquantity,float colormatprice,float colormattotalprice,String details,float entryprice1,float entryprice2, float totalcottonprice, float totalcolorprice) {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
             ContentValues contentValue = new ContentValues();
