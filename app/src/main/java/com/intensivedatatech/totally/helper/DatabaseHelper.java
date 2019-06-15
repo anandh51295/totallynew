@@ -144,12 +144,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean changenool(int id,float p_id,float whitequantity,float whiteprice,float colorquantity,float colorprice,float totalprice,float paid,String date,float cottonmatquantity,float cottonmatprice,float cottonmattotalprice,float colormatquantity,float colormatprice,float colormattotalprice,String details,float entryprice1,float entryprice2, float totalcottonprice, float totalcolorprice) {
+    public boolean changenool(int id,float p_id,float whitequantity,float whiteprice,float colorquantity,float colorprice,float totalprice,float paid,float cottonmatquantity,float cottonmatprice,float cottonmattotalprice,float colormatquantity,float colormatprice,float colormattotalprice,String details,float entryprice1,float entryprice2, float totalcottonprice, float totalcolorprice) {
 
         SQLiteDatabase database = this.getReadableDatabase();
         try {
             Cursor c = database.rawQuery("UPDATE " + TABLE3_NAME + " SET " + COL2_2 + " = '" + p_id + "'," +COL2_3+ " = "+ whitequantity + ", "+ COL2_4 +" = "+ whiteprice
-                    +" , "+ COL2_5 + " = " + colorquantity + ","+COL2_6 + " = " + colorprice + ","+COL2_7 + " = " + totalprice + ","+ COL2_8 + " = " + paid + ","+ COL2_9 + " = " + date + ","+ COL2_10 + " = " + cottonmatquantity + ","+ COL2_11 + " = " + cottonmatprice + ","+ COL2_12 + " = " + cottonmattotalprice + ","+ COL2_13 + " = " + colormatquantity + ","+ COL2_14 + " = " + colormatprice + ","+ COL2_15 + " = " + colormattotalprice + ","+ COL2_16 + " = '" + details + "',"+ COL2_17 + " = " + entryprice1 + ","+ COL2_18 + " = " + entryprice2 + ","+ COL2_19 + " = " + totalcottonprice + ","+ COL2_20 + " = " + totalcolorprice +" WHERE " + COL2_1 + " = " + id, null);
+                    +" , "+ COL2_5 + " = " + colorquantity + ","+COL2_6 + " = " + colorprice + ","+COL2_7 + " = " + totalprice + ","+ COL2_8 + " = " + paid + ","+ COL2_10 + " = " + cottonmatquantity + ","+ COL2_11 + " = " + cottonmatprice + ","+ COL2_12 + " = " + cottonmattotalprice + ","+ COL2_13 + " = " + colormatquantity + ","+ COL2_14 + " = " + colormatprice + ","+ COL2_15 + " = " + colormattotalprice + ","+ COL2_16 + " = '" + details + "',"+ COL2_17 + " = " + entryprice1 + ","+ COL2_18 + " = " + entryprice2 + ","+ COL2_19 + " = " + totalcottonprice + ","+ COL2_20 + " = " + totalcolorprice +" WHERE " + COL2_1 + " = " + id, null);
             c.moveToFirst();
             return true;
         } catch (Exception checks) {
@@ -260,6 +260,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getpaidstatus(int id){
+
+        SQLiteDatabase database = this.getWritableDatabase();
+        String query = "select * from nooltable where ID = "+id+"";
+        Cursor cursor = database.rawQuery(query, null);
+        if (cursor != null) {
+//            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
     public Cursor raw() {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -303,6 +314,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try {
             String query = "delete from partytable where id=" + id;
             db.execSQL(query);
+
+            String query1 = "delete from nooltable where P_ID =" + id;
+            db.execSQL(query1);
+
+
             return true;
         } catch (Exception rt) {
             rt.printStackTrace();

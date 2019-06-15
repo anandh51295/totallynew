@@ -38,6 +38,7 @@ public class UpdatenoolActivity extends AppCompatActivity {
     String sdateneed;
     String mid;
     NoolModel ndata;
+    String dd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,7 @@ public class UpdatenoolActivity extends AppCompatActivity {
         ed11 = findViewById(R.id.uncep2);
         btn = findViewById(R.id.unoolbutton);
         dates = findViewById(R.id.un_date);
+        dates.setVisibility(View.INVISIBLE);
         spinner.setVisibility(View.INVISIBLE);
         try {
             Intent i=getIntent();
@@ -81,33 +83,34 @@ public class UpdatenoolActivity extends AppCompatActivity {
                 ed9.setText(ndata.getDescription());
                 ed10.setText(String.valueOf(ndata.getEntryprice1()));
                 ed11.setText(String.valueOf(ndata.getEntryprice2()));
-                dates.setText(String.valueOf(ndata.getDate()));
-                sdateneed=String.valueOf(ndata.getDate());
+//                dates.setText(String.valueOf(ndata.getDate()));
+
+//                sdateneed=String.valueOf(ndata.getDate());
 
             }
         } catch (Exception r) {
             r.printStackTrace();
         }
-        dates.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar mcurrentDate = Calendar.getInstance();
-                int mYear = mcurrentDate.get(Calendar.YEAR);
-                int mMonth = mcurrentDate.get(Calendar.MONTH);
-                int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog mDatePicker = new DatePickerDialog(UpdatenoolActivity.this, new DatePickerDialog.OnDateSetListener() {
-                    public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
-                        selectedmonth = selectedmonth + 1;
-                        sdateneed = selectedyear + "-" + selectedmonth + "-" + selectedday;
-                        dates.setText("Selected Date: " + sdateneed);
-                    }
-                }, mYear, mMonth, mDay);
-                mDatePicker.getDatePicker().setMaxDate(System.currentTimeMillis() - 1000);
-                mDatePicker.setTitle("Select date");
-                mDatePicker.show();
-            }
-        });
+//        dates.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Calendar mcurrentDate = Calendar.getInstance();
+//                int mYear = mcurrentDate.get(Calendar.YEAR);
+//                int mMonth = mcurrentDate.get(Calendar.MONTH);
+//                int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
+//
+//                DatePickerDialog mDatePicker = new DatePickerDialog(UpdatenoolActivity.this, new DatePickerDialog.OnDateSetListener() {
+//                    public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+//                        selectedmonth = selectedmonth + 1;
+//                        sdateneed = selectedyear + "-" + selectedmonth + "-" + selectedday;
+//                        dates.setText("Selected Date: " + sdateneed);
+//                    }
+//                }, mYear, mMonth, mDay);
+//                mDatePicker.getDatePicker().setMaxDate(System.currentTimeMillis() - 1000);
+//                mDatePicker.setTitle("Select date");
+//                mDatePicker.show();
+//            }
+//        });
 
 //        uname.add("select party");
 //        uId.add("0");
@@ -154,6 +157,7 @@ public class UpdatenoolActivity extends AppCompatActivity {
 
                     if (!whitequantity.isEmpty() && !whiteprice.isEmpty() && !colorquantity.isEmpty() && !colorprice.isEmpty() && !cottonmatquantity.isEmpty() && !cottonmatprice.isEmpty() && !colormatquantity.isEmpty() && !colormatprice.isEmpty() && !entryprice1.isEmpty() && !entryprice2.isEmpty()) {
                         float wq, cq, wmateq, cmateq;
+                        float paidst=0;
                         float wp, cp, t1, t2, wmatep, cmatep, twmatep, tcmatep, ftprice, sndprice, ftfinalprice, sndfinalprice, fep1, fep2;
                         wq = Float.parseFloat(whitequantity);
                         cq = Float.parseFloat(colorquantity);
@@ -184,9 +188,19 @@ public class UpdatenoolActivity extends AppCompatActivity {
 //                        totalprice=t1+t2;
                         totalwhiteprice = t1;
                         totalcolorprice = t2;
+                        try{
+                            Cursor cursor=db.getpaidstatus(nid);
 
+                            while (cursor.moveToNext()) {
+                                paidst=cursor.getFloat(7);
 
-                        boolean fl = db.changenool(nid,pid, wq, wp, cq, cp, totalprice, 0, sdateneed, wmateq, wmatep, twmatep, cmateq, cmatep, tcmatep, description, fep1, fep2, totalwhiteprice, totalcolorprice);
+                                Log.d("paid",String.valueOf(paidst));
+
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                        boolean fl = db.changenool(nid,pid, wq, wp, cq, cp, totalprice, paidst, wmateq, wmatep, twmatep, cmateq, cmatep, tcmatep, description, fep1, fep2, totalwhiteprice, totalcolorprice);
 //                        boolean fl=true;
                         if (fl) {
                             finish();
