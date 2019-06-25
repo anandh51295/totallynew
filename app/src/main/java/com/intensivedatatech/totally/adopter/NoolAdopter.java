@@ -72,8 +72,8 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
             float tep1,tep2,mtot1,mtot2;
             tep1=data.get(i).getEntryprice1();
             tep2=data.get(i).getEntryprice2();
-            viewHolder.ep1.setText("பாக்கி1: "+String.valueOf(tep1));
-            viewHolder.ep2.setText("பாக்கி2: "+String.valueOf(tep2));
+            viewHolder.ep1.setText("முன் பாக்கி 1: "+String.valueOf(tep1));
+            viewHolder.ep2.setText("முன் பாக்கி 2: "+String.valueOf(tep2));
             mtot1=Math.abs(twp)+ tep1;
             mtot2=Math.abs(mtw)+ tep2;
             viewHolder.m1.setText("FTP1: "+String.valueOf(mtot1));

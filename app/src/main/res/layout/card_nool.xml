@@ -34,6 +34,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:text="WP"
+            android:textColor="#4CAF50"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/nool_pid" />
 
@@ -45,6 +46,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
             android:text="WQ"
+            android:textColor="#4CAF50"
             card_view:layout_constraintEnd_toStartOf="@+id/nooltotalw"
             card_view:layout_constraintStart_toEndOf="@+id/nool_wp"
             card_view:layout_constraintTop_toBottomOf="@+id/nool_pid" />
@@ -69,6 +71,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:text="CP"
+            android:textColor="#673AB7"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/nool_wp" />
 
@@ -80,6 +83,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:text="CQ"
+            android:textColor="#673AB7"
             card_view:layout_constraintEnd_toStartOf="@+id/nooltotalc"
             card_view:layout_constraintStart_toEndOf="@+id/nool_cp"
             card_view:layout_constraintTop_toBottomOf="@+id/nool_wq" />
@@ -124,6 +128,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="MatWP"
+            android:textColor="#4CAF50"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/nool_cp" />
 
@@ -135,6 +140,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:text="MatWQ"
+            android:textColor="#4CAF50"
             card_view:layout_constraintEnd_toStartOf="@+id/noolmattotalw"
             card_view:layout_constraintStart_toEndOf="@+id/noolmatwp"
             card_view:layout_constraintTop_toBottomOf="@+id/nool_cq" />
@@ -146,6 +152,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:text="MatCP"
+            android:textColor="#673AB7"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/noolmatwp" />
 
@@ -157,6 +164,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
             android:text="MatCQ"
+            android:textColor="#673AB7"
             card_view:layout_constraintEnd_toStartOf="@+id/noolmattotalc"
             card_view:layout_constraintStart_toEndOf="@+id/noolmatcp"
             card_view:layout_constraintTop_toBottomOf="@+id/noolmatwq" />
@@ -169,6 +177,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="totalw"
+            android:textColor="#4CAF50"
             card_view:layout_constraintBottom_toTopOf="@+id/nooltotalc"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/nool_edit" />
@@ -180,6 +189,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             android:text="totalc"
+            android:textColor="#673AB7"
             card_view:layout_constraintBottom_toTopOf="@+id/noolmattotalw"
             card_view:layout_constraintEnd_toEndOf="parent" />
 
@@ -190,6 +200,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             android:text="mattotalw"
+            android:textColor="#4CAF50"
             card_view:layout_constraintBottom_toTopOf="@+id/noolmattotalc"
             card_view:layout_constraintEnd_toEndOf="parent" />
 
@@ -200,6 +211,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             android:text="mattotalc"
+            android:textColor="#673AB7"
             card_view:layout_constraintBottom_toTopOf="@+id/nool_m1"
             card_view:layout_constraintEnd_toEndOf="parent" />
 
@@ -234,6 +246,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="24dp"
             android:text="total1"
+            android:textColor="#4CAF50"
             card_view:layout_constraintBottom_toTopOf="@+id/nool_total2"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/noolmatcp" />
@@ -245,6 +258,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginBottom="16dp"
             android:text="total2"
+            android:textColor="#673AB7"
             card_view:layout_constraintBottom_toTopOf="@+id/nool_des"
             card_view:layout_constraintStart_toStartOf="parent" />
 
@@ -257,6 +271,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="ep1"
+            android:textColor="#4CAF50"
             card_view:layout_constraintBottom_toTopOf="@+id/nool_ep2"
             card_view:layout_constraintEnd_toStartOf="@+id/nool_m1"
             card_view:layout_constraintStart_toEndOf="@+id/nool_total1"
@@ -271,6 +286,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             android:text="ep2"
+            android:textColor="#673AB7"
             card_view:layout_constraintBottom_toTopOf="@+id/nool_des"
             card_view:layout_constraintEnd_toStartOf="@+id/nool_m2"
             card_view:layout_constraintStart_toEndOf="@+id/nool_total2" />
@@ -282,6 +298,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="24dp"
             android:text="m1"
+            android:textColor="#4CAF50"
             card_view:layout_constraintBottom_toTopOf="@+id/nool_m2"
             card_view:layout_constraintEnd_toEndOf="parent" />
 
@@ -292,6 +309,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             android:text="m2"
+            android:textColor="#673AB7"
             card_view:layout_constraintBottom_toTopOf="@+id/nool_des"
             card_view:layout_constraintEnd_toEndOf="parent" />
 

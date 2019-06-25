@@ -39,6 +39,7 @@ public class UpdatenoolActivity extends AppCompatActivity {
     String mid;
     NoolModel ndata;
     String dd;
+    boolean add,subs,add1,subs1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,8 +82,20 @@ public class UpdatenoolActivity extends AppCompatActivity {
                 ed7.setText(String.valueOf(ndata.getColormatquantity()));
                 ed8.setText(String.valueOf(ndata.getColormatprice()));
                 ed9.setText(ndata.getDescription());
-                ed10.setText(String.valueOf(ndata.getEntryprice1()));
-                ed11.setText(String.valueOf(ndata.getEntryprice2()));
+                if(String.valueOf(ndata.getEntryprice1()).startsWith("-")){
+                    ed10.setText(String.valueOf(ndata.getEntryprice1()));
+                }else{
+                    String ttemp="+"+String.valueOf(ndata.getEntryprice1());
+                    ed10.setText(ttemp);
+                }
+//                ed10.setText(String.valueOf(ndata.getEntryprice1()));
+//                ed11.setText(String.valueOf(ndata.getEntryprice2()));
+                if(String.valueOf(ndata.getEntryprice2()).startsWith("-")){
+                    ed11.setText(String.valueOf(ndata.getEntryprice2()));
+                }else{
+                    String stemp="+"+String.valueOf(ndata.getEntryprice2());
+                    ed11.setText(stemp);
+                }
 //                dates.setText(String.valueOf(ndata.getDate()));
 
 //                sdateneed=String.valueOf(ndata.getDate());
@@ -155,6 +168,28 @@ public class UpdatenoolActivity extends AppCompatActivity {
                     entryprice1 = ed10.getText().toString();
                     entryprice2 = ed11.getText().toString();
 
+                    if(entryprice1.startsWith("+")){
+                        entryprice1.replace("+", "");
+                        add=true;
+                        subs=false;
+                    }
+                    if(entryprice1.startsWith("-")){
+                        entryprice1.replace("-", "");
+                        subs=true;
+                        add=false;
+                    }
+
+                    if(entryprice2.startsWith("+")){
+                        entryprice2.replace("+", "");
+                        add1=true;
+                        subs1=false;
+                    }
+                    if(entryprice2.startsWith("-")){
+                        entryprice2.replace("-", "");
+                        subs1=true;
+                        add1=false;
+                    }
+
                     if (!whitequantity.isEmpty() && !whiteprice.isEmpty() && !colorquantity.isEmpty() && !colorprice.isEmpty() && !cottonmatquantity.isEmpty() && !cottonmatprice.isEmpty() && !colormatquantity.isEmpty() && !colormatprice.isEmpty() && !entryprice1.isEmpty() && !entryprice2.isEmpty()) {
                         float wq, cq, wmateq, cmateq;
                         float paidst=0;
@@ -180,8 +215,26 @@ public class UpdatenoolActivity extends AppCompatActivity {
                         ftprice = t1 - twmatep;
                         sndprice = t2 - tcmatep;
 
-                        ftfinalprice = Math.abs(ftprice) + fep1;
-                        sndfinalprice = Math.abs(sndprice) + fep2;
+//                        ftfinalprice = Math.abs(ftprice) + fep1;
+//                        sndfinalprice = Math.abs(sndprice) + fep2;
+
+                        ftfinalprice=0;
+                        sndfinalprice=0;
+                        if(add){
+                            ftfinalprice=Math.abs(ftprice)+fep1;
+                        }else if(subs){
+                            ftfinalprice=Math.abs(ftprice)-fep1;
+                        }else{
+                            Log.d("error","no symbols found");
+                        }
+
+                        if(add1){
+                            sndfinalprice=Math.abs(sndprice) + fep2;
+                        }else if(subs1){
+                            sndfinalprice=Math.abs(sndprice) - fep2;
+                        }else{
+                            Log.d("error","no symbols found2");
+                        }
 
                         totalprice = ftfinalprice + sndfinalprice;
 

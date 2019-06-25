@@ -28,7 +28,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:ems="10"
-            android:hint="வெள்ளை நூல் அளவு"
+            android:hint="காட்டன் நூல் அளவு"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:ems="10"
-            android:hint=" வெள்ளை நூல் விலை"
+            android:hint="காட்டன் நூல் விலை"
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,8 +59,9 @@
             android:hint="கலர் நூல் அளவு"
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/unwprice" />
+            app:layout_constraintTop_toBottomOf="@+id/unccmp" />
 
         <EditText
             android:id="@+id/uncprice"
@@ -73,6 +74,7 @@
             android:hint="கலர் நூல் விலை "
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/uncquantity" />
 
@@ -84,11 +86,12 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:ems="10"
-            android:hint="வெள்ளை மேட் அளவு"
+            android:hint="காட்டன் மேட் அளவு"
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/uncprice" />
+            app:layout_constraintTop_toBottomOf="@+id/unwprice" />
 
         <EditText
             android:id="@+id/unccmp"
@@ -98,9 +101,10 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:ems="10"
-            android:hint="வெள்ளை மேட் விலை "
+            android:hint="காட்டன் மேட் விலை "
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/unccmq" />
 
@@ -116,7 +120,7 @@
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/unccmp" />
+            app:layout_constraintTop_toBottomOf="@+id/uncprice" />
 
         <EditText
             android:id="@+id/uncclmp"
@@ -181,7 +185,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:ems="10"
-            android:hint="பாக்கி விலை 1"
+            android:hint="முன் பாக்கி 1"
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -195,7 +199,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:ems="10"
-            android:hint="பாக்கி விலை 2"
+            android:hint="முன் பாக்கி 2"
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

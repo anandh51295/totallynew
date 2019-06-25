@@ -35,7 +35,7 @@ public class AddnoolActivity extends AppCompatActivity {
     String whiteprice, colorprice,whitequantity, colorquantity,cottonmatquantity,cottonmatprice,cottnmattotalprice,colormatquantity,colormatprice,colormattotalprice,description,entryprice1,entryprice2;
     float totalprice,totalwhiteprice,totalcolorprice;
     String sdateneed;
-
+    boolean add,subs,add1,subs1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,6 +117,29 @@ public class AddnoolActivity extends AppCompatActivity {
                     entryprice1=ed10.getText().toString();
                     entryprice2=ed11.getText().toString();
 
+                    if(entryprice1.startsWith("+")){
+                        entryprice1.replace("+", "");
+                        add=true;
+                        subs=false;
+                    }
+                    if(entryprice1.startsWith("-")){
+                        entryprice1.replace("-", "");
+                        subs=true;
+                        add=false;
+                    }
+
+                    if(entryprice2.startsWith("+")){
+                        entryprice2.replace("+", "");
+                        add1=true;
+                        subs1=false;
+                    }
+                    if(entryprice2.startsWith("-")){
+                        entryprice2.replace("-", "");
+                        subs1=true;
+                        add1=false;
+                    }
+
+
                     if(!whitequantity.isEmpty()&&!whiteprice.isEmpty()&&!colorquantity.isEmpty()&&!colorprice.isEmpty()&&!cottonmatquantity.isEmpty()&&!cottonmatprice.isEmpty()&&!colormatquantity.isEmpty()&&!colormatprice.isEmpty()&&!entryprice1.isEmpty()&&!entryprice2.isEmpty()){
                         float wq,cq,wmateq,cmateq;
                         float wp,cp,t1,t2,wmatep,cmatep,twmatep,tcmatep,ftprice,sndprice,ftfinalprice,sndfinalprice,fep1,fep2;
@@ -140,9 +163,24 @@ public class AddnoolActivity extends AppCompatActivity {
 
                         ftprice=t1-twmatep;
                         sndprice=t2-tcmatep;
+                        ftfinalprice=0;
+                        sndfinalprice=0;
+                        if(add){
+                            ftfinalprice=Math.abs(ftprice)+fep1;
+                        }else if(subs){
+                            ftfinalprice=Math.abs(ftprice)-fep1;
+                        }else{
+                            Log.d("error","no symbols found");
+                        }
 
-                        ftfinalprice=Math.abs(ftprice)+fep1;
-                        sndfinalprice=Math.abs(sndprice)+fep2;
+                        if(add1){
+                            sndfinalprice=Math.abs(sndprice) + fep2;
+                        }else if(subs1){
+                            sndfinalprice=Math.abs(sndprice) - fep2;
+                        }else{
+                            Log.d("error","no symbols found2");
+                        }
+
 
                         totalprice=ftfinalprice+sndfinalprice;
 
