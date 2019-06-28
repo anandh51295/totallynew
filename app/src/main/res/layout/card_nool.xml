@@ -33,10 +33,13 @@
             android:layout_height="15dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
             android:text="WP"
             android:textColor="#4CAF50"
+            card_view:layout_constraintBottom_toTopOf="@+id/noolmatwp"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/nool_pid" />
+            card_view:layout_constraintTop_toBottomOf="@+id/nool_pid"
+            card_view:layout_constraintVertical_bias="0.044" />
 
         <TextView
             android:id="@+id/nool_wq"
@@ -45,11 +48,15 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="WQ"
             android:textColor="#4CAF50"
+            card_view:layout_constraintBottom_toTopOf="@+id/noolmatwq"
             card_view:layout_constraintEnd_toStartOf="@+id/nooltotalw"
+            card_view:layout_constraintHorizontal_bias="0.475"
             card_view:layout_constraintStart_toEndOf="@+id/nool_wp"
-            card_view:layout_constraintTop_toBottomOf="@+id/nool_pid" />
+            card_view:layout_constraintTop_toBottomOf="@+id/nool_pid"
+            card_view:layout_constraintVertical_bias="0.035" />
 
         <TextView
             android:id="@+id/nool_tp"
@@ -69,24 +76,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="16dp"
             android:text="CP"
             android:textColor="#673AB7"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/nool_wp" />
+            card_view:layout_constraintBottom_toTopOf="@+id/noolmatcp"
+            card_view:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/nool_cq"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
             android:text="CQ"
             android:textColor="#673AB7"
+            card_view:layout_constraintBottom_toTopOf="@+id/noolmatcq"
             card_view:layout_constraintEnd_toStartOf="@+id/nooltotalc"
-            card_view:layout_constraintStart_toEndOf="@+id/nool_cp"
-            card_view:layout_constraintTop_toBottomOf="@+id/nool_wq" />
+            card_view:layout_constraintHorizontal_bias="0.488"
+            card_view:layout_constraintStart_toEndOf="@+id/nool_cp" />
 
         <TextView
             android:id="@+id/nool_p"
@@ -126,61 +134,64 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:text="MatWP"
             android:textColor="#4CAF50"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/nool_cp" />
+            card_view:layout_constraintBottom_toTopOf="@+id/nool_cp"
+            card_view:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/noolmatwq"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
             android:text="MatWQ"
             android:textColor="#4CAF50"
+            card_view:layout_constraintBottom_toTopOf="@+id/nool_cq"
             card_view:layout_constraintEnd_toStartOf="@+id/noolmattotalw"
-            card_view:layout_constraintStart_toEndOf="@+id/noolmatwp"
-            card_view:layout_constraintTop_toBottomOf="@+id/nool_cq" />
+            card_view:layout_constraintHorizontal_bias="0.496"
+            card_view:layout_constraintStart_toEndOf="@+id/noolmatwp" />
 
         <TextView
             android:id="@+id/noolmatcp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="16dp"
             android:text="MatCP"
             android:textColor="#673AB7"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/noolmatwp" />
+            card_view:layout_constraintBottom_toTopOf="@+id/nool_total1"
+            card_view:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/noolmatcq"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
             android:text="MatCQ"
             android:textColor="#673AB7"
+            card_view:layout_constraintBottom_toTopOf="@+id/nool_ep1"
             card_view:layout_constraintEnd_toStartOf="@+id/noolmattotalc"
-            card_view:layout_constraintStart_toEndOf="@+id/noolmatcp"
-            card_view:layout_constraintTop_toBottomOf="@+id/noolmatwq" />
+            card_view:layout_constraintHorizontal_bias="0.513"
+            card_view:layout_constraintStart_toEndOf="@+id/noolmatcp" />
 
         <TextView
             android:id="@+id/nooltotalw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="totalw"
             android:textColor="#4CAF50"
-            card_view:layout_constraintBottom_toTopOf="@+id/nooltotalc"
+            card_view:layout_constraintBottom_toTopOf="@+id/noolmattotalw"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/nool_edit" />
+            card_view:layout_constraintTop_toBottomOf="@+id/nool_edit"
+            card_view:layout_constraintVertical_bias="0.088" />
 
         <TextView
             android:id="@+id/nooltotalc"
@@ -190,7 +201,7 @@
             android:layout_marginBottom="16dp"
             android:text="totalc"
             android:textColor="#673AB7"
-            card_view:layout_constraintBottom_toTopOf="@+id/noolmattotalw"
+            card_view:layout_constraintBottom_toTopOf="@+id/noolmattotalc"
             card_view:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
@@ -201,7 +212,7 @@
             android:layout_marginBottom="16dp"
             android:text="mattotalw"
             android:textColor="#4CAF50"
-            card_view:layout_constraintBottom_toTopOf="@+id/noolmattotalc"
+            card_view:layout_constraintBottom_toTopOf="@+id/nooltotalc"
             card_view:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
@@ -243,13 +254,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginBottom="24dp"
             android:text="total1"
-            android:textColor="#4CAF50"
+            android:textColor="#F44336"
             card_view:layout_constraintBottom_toTopOf="@+id/nool_total2"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/noolmatcp" />
+            card_view:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/nool_total2"
@@ -258,7 +267,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginBottom="16dp"
             android:text="total2"
-            android:textColor="#673AB7"
+            android:textColor="#F44336"
             card_view:layout_constraintBottom_toTopOf="@+id/nool_des"
             card_view:layout_constraintStart_toStartOf="parent" />
 
@@ -267,16 +276,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:text="ep1"
-            android:textColor="#4CAF50"
+            android:textColor="#F44336"
             card_view:layout_constraintBottom_toTopOf="@+id/nool_ep2"
             card_view:layout_constraintEnd_toStartOf="@+id/nool_m1"
-            card_view:layout_constraintStart_toEndOf="@+id/nool_total1"
-            card_view:layout_constraintTop_toBottomOf="@+id/noolmatcq"
-            card_view:layout_constraintVertical_bias="0.241" />
+            card_view:layout_constraintHorizontal_bias="0.417"
+            card_view:layout_constraintStart_toEndOf="@+id/nool_total1" />
 
         <TextView
             android:id="@+id/nool_ep2"
@@ -284,11 +291,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="20dp"
             android:text="ep2"
-            android:textColor="#673AB7"
+            android:textColor="#F44336"
             card_view:layout_constraintBottom_toTopOf="@+id/nool_des"
             card_view:layout_constraintEnd_toStartOf="@+id/nool_m2"
+            card_view:layout_constraintHorizontal_bias="0.417"
             card_view:layout_constraintStart_toEndOf="@+id/nool_total2" />
 
         <TextView
@@ -298,7 +306,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="24dp"
             android:text="m1"
-            android:textColor="#4CAF50"
+            android:textColor="#F44336"
             card_view:layout_constraintBottom_toTopOf="@+id/nool_m2"
             card_view:layout_constraintEnd_toEndOf="parent" />
 
@@ -309,7 +317,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             android:text="m2"
-            android:textColor="#673AB7"
+            android:textColor="#F44336"
             card_view:layout_constraintBottom_toTopOf="@+id/nool_des"
             card_view:layout_constraintEnd_toEndOf="parent" />
 

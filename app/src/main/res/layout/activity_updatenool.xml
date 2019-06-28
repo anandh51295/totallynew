@@ -186,7 +186,7 @@
             android:layout_marginEnd="8dp"
             android:ems="10"
             android:hint="முன் பாக்கி 1"
-            android:inputType="numberDecimal"
+            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/uncdesc" />
@@ -200,7 +200,7 @@
             android:layout_marginEnd="8dp"
             android:ems="10"
             android:hint="முன் பாக்கி 2"
-            android:inputType="numberDecimal"
+            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/uncep1" />
