@@ -7,6 +7,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -19,7 +22,6 @@ import java.util.ArrayList;
 public class NoolActivity extends AppCompatActivity {
     DatabaseHelper db;
     RecyclerView recyclerView;
-    FloatingActionButton fab;
     ArrayList<NoolModel> data = new ArrayList<>();
     NoolModel ndata;
     NoolAdopter adapter;
@@ -31,7 +33,7 @@ public class NoolActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nool);
         recyclerView = findViewById(R.id.noollist);
-        fab = findViewById(R.id.noolfab);
+
         recyclerView.setHasFixedSize(true);
         db = new DatabaseHelper(getApplicationContext());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -45,36 +47,21 @@ public class NoolActivity extends AppCompatActivity {
             r.printStackTrace();
         }
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    if(types.equals("update")){
-                        Toast.makeText(getApplicationContext(), "Sorry Can't Add in Group List mode", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Intent intent = new Intent(NoolActivity.this, AddnoolActivity.class);
-                        startActivity(intent);
-                    }
-                } catch (Exception r) {
-                    r.printStackTrace();
-                }
 
-            }
-        });
 
         try {
             if (types.equals("update")) {
 
                 Cursor cursor = db.getnoolbyid(String.valueOf(ids));
                 while (cursor.moveToNext()) {
-                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getFloat(2), cursor.getFloat(3), cursor.getFloat(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getString(8), cursor.getFloat(9), cursor.getFloat(10), cursor.getFloat(11), cursor.getFloat(12), cursor.getFloat(13), cursor.getFloat(14), cursor.getString(15), cursor.getFloat(16), cursor.getFloat(17), cursor.getFloat(18), cursor.getFloat(19));
+                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getFloat(2), cursor.getFloat(3), cursor.getFloat(4), cursor.getFloat(5), cursor.getString(6), cursor.getFloat(7), cursor.getFloat(8), cursor.getFloat(9), cursor.getFloat(10), cursor.getFloat(11));
                     data.add(ndata);
 
                 }
             } else {
                 Cursor cursor = db.getnool();
                 while (cursor.moveToNext()) {
-                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getFloat(2), cursor.getFloat(3), cursor.getFloat(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getString(8), cursor.getFloat(9), cursor.getFloat(10), cursor.getFloat(11), cursor.getFloat(12), cursor.getFloat(13), cursor.getFloat(14), cursor.getString(15), cursor.getFloat(16), cursor.getFloat(17), cursor.getFloat(18), cursor.getFloat(19));
+                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getFloat(2), cursor.getFloat(3), cursor.getFloat(4), cursor.getFloat(5), cursor.getString(6), cursor.getFloat(7), cursor.getFloat(8), cursor.getFloat(9), cursor.getFloat(10), cursor.getFloat(11));
                     data.add(ndata);
 
                 }
@@ -85,6 +72,35 @@ public class NoolActivity extends AppCompatActivity {
             recyclerView.setAdapter(adapter);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.addmenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_add:
+                try {
+                    if(types.equals("update")){
+                        Toast.makeText(getApplicationContext(), "Sorry Can't Add in Group List mode", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Intent intent = new Intent(NoolActivity.this, AddnoolActivity.class);
+                        startActivity(intent);
+                    }
+                } catch (Exception r) {
+                    r.printStackTrace();
+                }
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
@@ -100,14 +116,14 @@ public class NoolActivity extends AppCompatActivity {
             if (types.equals("update")) {
                 Cursor cursor = db.getnoolbyid(String.valueOf(ids));
                 while (cursor.moveToNext()) {
-                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getFloat(2), cursor.getFloat(3), cursor.getFloat(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getString(8), cursor.getFloat(9), cursor.getFloat(10), cursor.getFloat(11), cursor.getFloat(12), cursor.getFloat(13), cursor.getFloat(14), cursor.getString(15), cursor.getFloat(16), cursor.getFloat(17), cursor.getFloat(18), cursor.getFloat(19));
+                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getFloat(2), cursor.getFloat(3), cursor.getFloat(4), cursor.getFloat(5), cursor.getString(6), cursor.getFloat(7), cursor.getFloat(8), cursor.getFloat(9), cursor.getFloat(10), cursor.getFloat(11));
                     data.add(ndata);
 
                 }
             } else {
                 Cursor cursor = db.getnool();
                 while (cursor.moveToNext()) {
-                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getFloat(2), cursor.getFloat(3), cursor.getFloat(4), cursor.getFloat(5), cursor.getFloat(6), cursor.getFloat(7), cursor.getString(8), cursor.getFloat(9), cursor.getFloat(10), cursor.getFloat(11), cursor.getFloat(12), cursor.getFloat(13), cursor.getFloat(14), cursor.getString(15), cursor.getFloat(16), cursor.getFloat(17), cursor.getFloat(18), cursor.getFloat(19));
+                    ndata = new NoolModel(cursor.getInt(0), cursor.getInt(1), cursor.getFloat(2), cursor.getFloat(3), cursor.getFloat(4), cursor.getFloat(5), cursor.getString(6), cursor.getFloat(7), cursor.getFloat(8), cursor.getFloat(9), cursor.getFloat(10), cursor.getFloat(11));
                     data.add(ndata);
 
                 }

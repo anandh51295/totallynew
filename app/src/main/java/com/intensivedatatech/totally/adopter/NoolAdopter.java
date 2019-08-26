@@ -3,6 +3,7 @@ package com.intensivedatatech.totally.adopter;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -44,25 +45,25 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         db = new DatabaseHelper(viewHolder.whitequantity.getContext());
         try {
-            viewHolder.whitequantity.setText("வெ.அளவு: " + String.valueOf(data.get(i).getWhitequantity()));
-            viewHolder.whiteprice.setText("வெ.விலை: " + String.valueOf(data.get(i).getWhiteprice()));
-            viewHolder.colorquantity.setText("கலர்.அளவு: " + String.valueOf(data.get(i).getColorquantity()));
-            viewHolder.colorprice.setText("கலர்.விலை: " + String.valueOf(data.get(i).getColorprice()));
+            viewHolder.whitequantity.setText("நூல் அளவு: " + String.valueOf(data.get(i).getWhitequantity()));
+            viewHolder.whiteprice.setText("நூல் விலை: " + String.valueOf(data.get(i).getWhiteprice()));
+
+
             viewHolder.totalprice.setText("TP: " + String.valueOf(data.get(i).getTotalprice()));
             viewHolder.totalw.setText("மொ.1: "+String.valueOf(data.get(i).getTotalwhiteprice()));
-            viewHolder.totalc.setText("மொ.2: "+String.valueOf(data.get(i).getTotalcottonprice()));
-            viewHolder.matwp.setText("மேட்.வெ.வி: "+String.valueOf(data.get(i).getCottonmatprice()));
-            viewHolder.matwq.setText("மேட்.வெ.அ: "+String.valueOf(data.get(i).getCottonmatquantity()));
-            viewHolder.matcq.setText("மேட்.க.அ: "+String.valueOf(data.get(i).getColormatquantity()));
-            viewHolder.matcp.setText("மேட்.க.வி: "+String.valueOf(data.get(i).getColormatprice()));
-            viewHolder.mattotalw.setText("மொ.3: "+String.valueOf(data.get(i).getCottonmattotalprice()));
-            viewHolder.mattotalc.setText("மொ.4: "+String.valueOf(data.get(i).getColormattotalprice()));
+
+            viewHolder.matwp.setText("மேட் விலை: "+String.valueOf(data.get(i).getCottonmatprice()));
+            viewHolder.matwq.setText("மேட் அளவு: "+String.valueOf(data.get(i).getCottonmatquantity()));
+
+
+            viewHolder.mattotalw.setText("மொ.2: "+String.valueOf(data.get(i).getCottonmattotalprice()));
+
             viewHolder.paid.setText("Paid: " + String.valueOf(data.get(i).getPaid()));
             viewHolder.date.setText(data.get(i).getDate());
             float twp=data.get(i).getTotalwhiteprice()-data.get(i).getCottonmattotalprice();
-            float mtw=data.get(i).getTotalcottonprice()-data.get(i).getColormattotalprice();
+
             viewHolder.total1.setText("மொ.வெ: "+String.valueOf(twp));
-            viewHolder.total2.setText("மொ.கலர்: "+String.valueOf(mtw));
+
 //            float temps=twp-mtw;
 //            viewHolder.m1.setText(String.valueOf(temps));
 //            float tcp=data.get(i).getTotalwhiteprice();
@@ -71,20 +72,26 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
 //            viewHolder.m2.setText(String.valueOf(tem1));
             float tep1,tep2,mtot1,mtot2;
             tep1=data.get(i).getEntryprice1();
-            tep2=data.get(i).getEntryprice2();
-            viewHolder.ep1.setText("மு.பாக்கி1: "+String.valueOf(tep1));
-            viewHolder.ep2.setText("மு.பாக்கி2: "+String.valueOf(tep2));
+
+
+            if(String.valueOf(tep1).startsWith("-")){
+                viewHolder.ep1.setText("மு.பாக்கி(-): "+String.valueOf(tep1));
+                viewHolder.ep1.setTextColor(Color.MAGENTA);
+            }else{
+                viewHolder.ep1.setText("மு.பாக்கி(+): "+String.valueOf(tep1));
+            }
+
             mtot1=Math.abs(twp)+ tep1;
-            mtot2=Math.abs(mtw)+ tep2;
+
             viewHolder.m1.setText("P1: "+String.valueOf(mtot1));
-            viewHolder.m2.setText("P2: "+String.valueOf(mtot2));
-            viewHolder.des.setText(data.get(i).getDescription());
+
+
             try {
                 float a, b, cr;
                 a = data.get(i).getTotalprice();
                 b = data.get(i).getPaid();
                 if (b > 0) {
-                    cr = a - b;
+                    cr = Math.abs(a) - Math.abs(b);
                     Log.d("balance", "working");
                     viewHolder.notpaid.setText("Not Paid:" + String.valueOf(cr));
                 } else {
@@ -112,23 +119,20 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView whitequantity, whiteprice, colorquantity, colorprice, totalprice, paid, pid, notpaid, date, totalw, totalc, matwp, matwq, matcp, matcq, mattotalw, mattotalc,total1,total2,ep1,ep2,m1,m2,des;
+        TextView whitequantity, whiteprice, totalprice, paid, pid, notpaid, date, totalw, matwp, matwq, mattotalw,total1,ep1,m1;
         ImageView edt, del;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             total1=itemView.findViewById(R.id.nool_total1);
-            total2=itemView.findViewById(R.id.nool_total2);
+
             ep1=itemView.findViewById(R.id.nool_ep1);
-            ep2=itemView.findViewById(R.id.nool_ep2);
+
             m1=itemView.findViewById(R.id.nool_m1);
-            m2=itemView.findViewById(R.id.nool_m2);
-            des=itemView.findViewById(R.id.nool_des);
+
 
             whitequantity = itemView.findViewById(R.id.nool_wq);
             whiteprice = itemView.findViewById(R.id.nool_wp);
-            colorquantity = itemView.findViewById(R.id.nool_cq);
-            colorprice = itemView.findViewById(R.id.nool_cp);
             totalprice = itemView.findViewById(R.id.nool_tp);
             paid = itemView.findViewById(R.id.nool_p);
             pid = itemView.findViewById(R.id.nool_pid);
@@ -138,13 +142,12 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
             edt = itemView.findViewById(R.id.nool_edit);
             del = itemView.findViewById(R.id.nool_del);
             totalw=itemView.findViewById(R.id.nooltotalw);
-            totalc=itemView.findViewById(R.id.nooltotalc);
+
             matwp=itemView.findViewById(R.id.noolmatwp);
             matwq=itemView.findViewById(R.id.noolmatwq);
-            matcp=itemView.findViewById(R.id.noolmatcp);
-            matcq=itemView.findViewById(R.id.noolmatcq);
+
             mattotalw=itemView.findViewById(R.id.noolmattotalw);
-            mattotalc=itemView.findViewById(R.id.noolmattotalc);
+
 
             edt.setOnClickListener(new View.OnClickListener() {
                 @Override

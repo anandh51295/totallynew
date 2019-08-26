@@ -25,15 +25,15 @@ import java.util.List;
 
 public class AddnoolActivity extends AppCompatActivity {
     DatabaseHelper db;
-    EditText ed1, ed2, ed3, ed4,ed5,ed6,ed7,ed8,ed9,ed10,ed11;
+    EditText ed1, ed2,ed5,ed6,ed10,ned;
     TextView dates;
     Button btn;
     Spinner spinner;
     int pid;
     List<String> uId = new ArrayList<String>();
     List<String> uname = new ArrayList<String>();
-    String whiteprice, colorprice,whitequantity, colorquantity,cottonmatquantity,cottonmatprice,cottnmattotalprice,colormatquantity,colormatprice,colormattotalprice,description,entryprice1,entryprice2;
-    float totalprice,totalwhiteprice,totalcolorprice;
+    String whiteprice,whitequantity,cottonmatquantity,cottonmatprice,cottnmattotalprice,entryprice1,entryprices;
+    float totalprice,totalwhiteprice;
     String sdateneed;
     boolean add,subs,add1,subs1;
     @Override
@@ -43,15 +43,12 @@ public class AddnoolActivity extends AppCompatActivity {
         spinner = findViewById(R.id.noolspinner);
         ed1 = findViewById(R.id.nwquantity);
         ed2 = findViewById(R.id.nwprice);
-        ed3 = findViewById(R.id.ncquantity);
-        ed4 = findViewById(R.id.ncprice);
+
         ed5=findViewById(R.id.nccmq);
         ed6=findViewById(R.id.nccmp);
-        ed7=findViewById(R.id.ncclmq);
-        ed8=findViewById(R.id.ncclmp);
-        ed9=findViewById(R.id.ncdesc);
+
         ed10=findViewById(R.id.ncep1);
-        ed11=findViewById(R.id.ncep2);
+        ned = findViewById(R.id.scep2);
         btn = findViewById(R.id.noolbutton);
         dates = findViewById(R.id.n_date);
         dates.setOnClickListener(new View.OnClickListener() {
@@ -107,15 +104,21 @@ public class AddnoolActivity extends AppCompatActivity {
                 try {
                     whitequantity=ed1.getText().toString();
                     whiteprice= ed2.getText().toString();
-                    colorquantity=ed3.getText().toString();
-                    colorprice=ed4.getText().toString();
+
                     cottonmatquantity=ed5.getText().toString();
                     cottonmatprice=ed6.getText().toString();
-                    colormatquantity=ed7.getText().toString();
-                    colormatprice=ed8.getText().toString();
-                    description=ed9.getText().toString();
+
                     entryprice1=ed10.getText().toString();
-                    entryprice2=ed11.getText().toString();
+                    entryprices = ned.getText().toString();
+
+                    if(!entryprice1.isEmpty()){
+                        entryprice1="+"+entryprice1;
+                    }else if(!entryprices.isEmpty()){
+                        entryprice1="-"+entryprices;
+                    }else{
+                        Log.d("newbox","error");
+                        Toast.makeText(getApplicationContext(),"Please Check the Given Values",Toast.LENGTH_LONG).show();
+                    }
 
                     if(entryprice1.startsWith("+")){
                         entryprice1.replace("+", "");
@@ -128,68 +131,48 @@ public class AddnoolActivity extends AppCompatActivity {
                         add=false;
                     }
 
-                    if(entryprice2.startsWith("+")){
-                        entryprice2.replace("+", "");
-                        add1=true;
-                        subs1=false;
-                    }
-                    if(entryprice2.startsWith("-")){
-                        entryprice2.replace("-", "");
-                        subs1=true;
-                        add1=false;
-                    }
 
 
-                    if(!whitequantity.isEmpty()&&!whiteprice.isEmpty()&&!colorquantity.isEmpty()&&!colorprice.isEmpty()&&!cottonmatquantity.isEmpty()&&!cottonmatprice.isEmpty()&&!colormatquantity.isEmpty()&&!colormatprice.isEmpty()&&!entryprice1.isEmpty()&&!entryprice2.isEmpty()){
-                        float wq,cq,wmateq,cmateq;
-                        float wp,cp,t1,t2,wmatep,cmatep,twmatep,tcmatep,ftprice,sndprice,ftfinalprice,sndfinalprice,fep1,fep2;
+                    if(!whitequantity.isEmpty()&&!whiteprice.isEmpty()&&!cottonmatquantity.isEmpty()&&!cottonmatprice.isEmpty()){
+                        float wq,wmateq;
+                        float wp,t1,wmatep,twmatep,ftprice,ftfinalprice,sndfinalprice,fep1;
                         wq=Float.parseFloat(whitequantity);
-                        cq=Float.parseFloat(colorquantity);
+
                         wp=Float.parseFloat(whiteprice);
-                        cp=Float.parseFloat(colorprice);
+
                         wmateq=Float.parseFloat(cottonmatquantity);
                         wmatep=Float.parseFloat(cottonmatprice);
-                        cmateq=Float.parseFloat(colormatquantity);
-                        cmatep=Float.parseFloat(colormatprice);
+
                         fep1=Float.parseFloat(entryprice1);
-                        fep2=Float.parseFloat(entryprice2);
-                        if(description.isEmpty()){
-                            description="no data";
-                        }
+
                         t1=wq*wp;
-                        t2=cq*cp;
+
                         twmatep=wmateq*wmatep;
-                        tcmatep=cmateq*cmatep;
+
 
                         ftprice=t1-twmatep;
-                        sndprice=t2-tcmatep;
+
                         ftfinalprice=0;
                         sndfinalprice=0;
                         if(add){
                             ftfinalprice=Math.abs(ftprice)+fep1;
                         }else if(subs){
-                            ftfinalprice=Math.abs(ftprice)-fep1;
+                            ftfinalprice=Math.abs(ftprice)-Math.abs(fep1);
                         }else{
                             Log.d("error","no symbols found");
                         }
 
-                        if(add1){
-                            sndfinalprice=Math.abs(sndprice) + fep2;
-                        }else if(subs1){
-                            sndfinalprice=Math.abs(sndprice) - fep2;
-                        }else{
-                            Log.d("error","no symbols found2");
-                        }
 
 
-                        totalprice=ftfinalprice+sndfinalprice;
+
+                        totalprice=ftfinalprice;
 
 //                        totalprice=t1+t2;
                         totalwhiteprice=t1;
-                        totalcolorprice=t2;
 
 
-                        boolean fl=db.insertnool(pid,wq,wp,cq,cp,totalprice,0,sdateneed,wmateq,wmatep,twmatep,cmateq,cmatep,tcmatep,description,fep1,fep2,totalwhiteprice,totalcolorprice);
+
+                        boolean fl=db.insertnool(pid,wq,wp,totalprice,0,sdateneed,wmateq,wmatep,twmatep,fep1,totalwhiteprice);
 //                        boolean fl=true;
                         if(fl){
                             finish();

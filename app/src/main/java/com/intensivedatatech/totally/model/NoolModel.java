@@ -12,10 +12,7 @@ public class NoolModel {
     float whitequantity;
     @SerializedName("whiteprice")
     float whiteprice;
-    @SerializedName("colorquantity")
-    float colorquantity;
-    @SerializedName("colorprice")
-    float colorprice;
+
     @SerializedName("totalprice")
     float totalprice;
     @SerializedName("paid")
@@ -29,44 +26,36 @@ public class NoolModel {
     float cottonmatprice;
     @SerializedName("cottonmattotalprice")
     float cottonmattotalprice;
-    @SerializedName("colormatquantity")
-    float colormatquantity;
-    @SerializedName("colormatprice")
-    float colormatprice;
-    @SerializedName("colormattotalprice")
-    float colormattotalprice;
-    @SerializedName("description")
-    String description;
+
+
     @SerializedName("entryprice1")
     float entryprice1;
-    @SerializedName("entryprice2")
-    float entryprice2;
-    @SerializedName("totalcottonprice")
-    float totalcottonprice;
+
+
     @SerializedName("totalwhiteprice")
     float totalwhiteprice;
 
 
-    public NoolModel(int id, int pid, float whitequantity, float whiteprice, float colorquantity, float colorprice, float totalprice, float paid,String date,float cottonmatquantity,float cottonmatprice,float cottonmattotalprice,float colormatquantity,float colormatprice,float colormattotalprice,String description,float entryprice1,float entryprice2,float totalcottonprice,float totalwhiteprice){
+    public NoolModel(int id, int pid, float whitequantity, float whiteprice,  float totalprice, float paid,String date,float cottonmatquantity,float cottonmatprice,float cottonmattotalprice,float entryprice1,float totalwhiteprice){
         this.id=id;
         this.pid=pid;
         this.whitequantity=whitequantity;
         this.whiteprice=whiteprice;
-        this.colorquantity=colorquantity;
-        this.colorprice=colorprice;
+
         this.totalprice=totalprice;
         this.paid=paid;
         this.date=date;
         this.cottonmatquantity=cottonmatquantity;
         this.cottonmatprice=cottonmatprice;
         this.cottonmattotalprice=cottonmattotalprice;
-        this.colormatquantity=colormatquantity;
-        this.colormatprice=colormatprice;
-        this.colormattotalprice=colormattotalprice;
-        this.description=description;
+
+
+
+
         this.entryprice1=entryprice1;
-        this.entryprice2=entryprice2;
-        this.totalcottonprice=totalcottonprice;
+
+
+
         this.totalwhiteprice=totalwhiteprice;
     }
     public int getId() {
@@ -93,13 +82,7 @@ public class NoolModel {
         this.whitequantity = whitequantity;
     }
 
-    public float getColorquantity() {
-        return colorquantity;
-    }
 
-    public void setColorquantity(float colorquantity) {
-        this.colorquantity = colorquantity;
-    }
 
     public float getCottonmatquantity() {
         return cottonmatquantity;
@@ -109,13 +92,7 @@ public class NoolModel {
         this.cottonmatquantity = cottonmatquantity;
     }
 
-    public float getColormatquantity() {
-        return colormatquantity;
-    }
 
-    public void setColormatquantity(float colormatquantity) {
-        this.colormatquantity = colormatquantity;
-    }
 
     public void setWhitequantity(int whitequantity) {
         this.whitequantity = whitequantity;
@@ -131,17 +108,7 @@ public class NoolModel {
 
 
 
-    public void setColorquantity(int colorquantity) {
-        this.colorquantity = colorquantity;
-    }
 
-    public float getColorprice() {
-        return colorprice;
-    }
-
-    public void setColorprice(float colorprice) {
-        this.colorprice = colorprice;
-    }
 
     public float getTotalprice() {
         return totalprice;
@@ -192,33 +159,12 @@ public class NoolModel {
 
 
 
-    public void setColormatquantity(int colormatquantity) {
-        this.colormatquantity = colormatquantity;
-    }
 
-    public float getColormatprice() {
-        return colormatprice;
-    }
 
-    public void setColormatprice(float colormatprice) {
-        this.colormatprice = colormatprice;
-    }
 
-    public float getColormattotalprice() {
-        return colormattotalprice;
-    }
 
-    public void setColormattotalprice(float colormattotalprice) {
-        this.colormattotalprice = colormattotalprice;
-    }
 
-    public String getDescription() {
-        return description;
-    }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public float getEntryprice1() {
         return entryprice1;
@@ -228,21 +174,9 @@ public class NoolModel {
         this.entryprice1 = entryprice1;
     }
 
-    public float getEntryprice2() {
-        return entryprice2;
-    }
 
-    public void setEntryprice2(float entryprice2) {
-        this.entryprice2 = entryprice2;
-    }
 
-    public float getTotalcottonprice() {
-        return totalcottonprice;
-    }
 
-    public void setTotalcottonprice(float totalcottonprice) {
-        this.totalcottonprice = totalcottonprice;
-    }
 
     public float getTotalwhiteprice() {
         return totalwhiteprice;

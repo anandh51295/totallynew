@@ -52,7 +52,7 @@ public class ExportActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this, new String[]{permission}, PERMISSIONS_REQUEST_CODE);
             }
         } else {
-            exp();
+//            exp();
 //            exp1();
             exp2();
         }
@@ -67,7 +67,7 @@ public class ExportActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == FILE_PICKER_REQUEST_CODE && resultCode == RESULT_OK) {
-            exp();
+//            exp();
 //            exp1();
             exp2();
 

@@ -28,13 +28,15 @@ public class AdduserActivity extends AppCompatActivity {
         ed1 = findViewById(R.id.et_name);
         ed2 = findViewById(R.id.et_address);
         ed3 = findViewById(R.id.et_number);
+        ed2.setVisibility(View.GONE);
+        address="nodata";
         try {
             Intent i = getIntent();
             type = i.getStringExtra("type");
             if (type.equals("update")) {
                 id=i.getIntExtra("id",0);
                 name = i.getStringExtra("name");
-                address = i.getStringExtra("address");
+//                address = i.getStringExtra("address");
                 number = i.getStringExtra("number");
                 if(!name.isEmpty()&& !address.isEmpty()&&!number.isEmpty()){
                     ed1.setText(name);
@@ -51,7 +53,8 @@ public class AdduserActivity extends AppCompatActivity {
                 if(type.equals("insert")){
                     String name, address, number;
                     name = ed1.getText().toString();
-                    address = ed2.getText().toString();
+//                    address = ed2.getText().toString();
+                    address="nodata";
                     number = ed3.getText().toString();
                     if (!name.isEmpty() && !address.isEmpty() && !number.isEmpty()) {
                         boolean ck = db.insertparty(name, address, number);
@@ -67,7 +70,8 @@ public class AdduserActivity extends AppCompatActivity {
                 }else if(type.equals("update")){
                     String name, address, number;
                     name = ed1.getText().toString();
-                    address = ed2.getText().toString();
+//                    address = ed2.getText().toString();
+                    address="nodata";
                     number = ed3.getText().toString();
                     if (!name.isEmpty() && !address.isEmpty() && !number.isEmpty()) {
                         boolean ck = db.changeparty(id,name, address, number);

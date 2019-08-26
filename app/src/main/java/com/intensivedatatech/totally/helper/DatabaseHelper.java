@@ -29,22 +29,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL2_2 = "P_ID";
     public static final String COL2_3 = "COTTONQUANTITY";
     public static final String COL2_4 = "COTTONPRICE";
-    public static final String COL2_5 = "COLORQUANTITY";
-    public static final String COL2_6 = "COLORPRICE";
+
     public static final String COL2_7 = "TOTALPRICE";
     public static final String COL2_8 = "PAID";
     public static final String COL2_9 = "DATE";
     public static final String COL2_10 = "COTTONMATQUANTITY";
     public static final String COL2_11 = "COTTONMATPRICE";
     public static final String COL2_12 = "COTTONMATTOTALPRICE";
-    public static final String COL2_13 = "COLORMATQUANTITY";
-    public static final String COL2_14 = "COLORMATPRICE";
-    public static final String COL2_15 = "COLORMATTOTALPRICE";
-    public static final String COL2_16 = "DESCRIPTION";
+
+
     public static final String COL2_17 = "ENTRYPRICE1";
-    public static final String COL2_18 = "ENTRYPRICE2";
+
     public static final String COL2_19 = "TOTALCOTTONPRICE";
-    public static final String COL2_20 = "TOTALCOLORPRICE";
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
@@ -53,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY,NAME VARACHAR,ADDRESS VARCHAR, MOBILE VARCHAR)");
 //        db.execSQL("create table " + TABLE2_NAME + " (ID INTEGER PRIMARY KEY,NAME_ADDRESS VARACHAR,QUANTITY INTEGER, PRICE FLOAT,TOTALPRICE FLOAT,DATE VARCHAR)");
-        db.execSQL("create table " + TABLE3_NAME + " (ID INTEGER PRIMARY KEY,P_ID INTEGER,COTTONQUANTITY FLOAT, COTTONPRICE FLOAT,COLORQUANTITY FLOAT,COLORPRICE FLOAT,TOTALPRICE FLOAT,PAID FLOAT,DATE VARCHAR,COTTONMATQUANTITY FLOAT,COTTONMATPRICE FLOAT,COTTONMATTOTALPRICE FLOAT,COLORMATQUANTITY FLOAT,COLORMATPRICE FLOAT,COLORMATTOTALPRICE FLOAT,DESCRIPTION VARCHAR,ENTRYPRICE1 FLOAT,ENTRYPRICE2 FLOAT,TOTALCOLORPRICE FLOAT,TOTALCOTTONPRICE FLOAT)");
+        db.execSQL("create table " + TABLE3_NAME + " (ID INTEGER PRIMARY KEY,P_ID INTEGER,COTTONQUANTITY FLOAT, COTTONPRICE FLOAT,TOTALPRICE FLOAT,PAID FLOAT,DATE VARCHAR,COTTONMATQUANTITY FLOAT,COTTONMATPRICE FLOAT,COTTONMATTOTALPRICE FLOAT,ENTRYPRICE1 FLOAT,TOTALCOTTONPRICE FLOAT)");
     }
 
     @Override
@@ -144,12 +141,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean changenool(int id,float p_id,float whitequantity,float whiteprice,float colorquantity,float colorprice,float totalprice,float paid,float cottonmatquantity,float cottonmatprice,float cottonmattotalprice,float colormatquantity,float colormatprice,float colormattotalprice,String details,float entryprice1,float entryprice2, float totalcottonprice, float totalcolorprice) {
+    public boolean changenool(int id,float p_id,float whitequantity,float whiteprice,float totalprice,float paid,float cottonmatquantity,float cottonmatprice,float cottonmattotalprice,float entryprice1, float totalcottonprice) {
 
         SQLiteDatabase database = this.getReadableDatabase();
         try {
             Cursor c = database.rawQuery("UPDATE " + TABLE3_NAME + " SET " + COL2_2 + " = '" + p_id + "'," +COL2_3+ " = "+ whitequantity + ", "+ COL2_4 +" = "+ whiteprice
-                    +" , "+ COL2_5 + " = " + colorquantity + ","+COL2_6 + " = " + colorprice + ","+COL2_7 + " = " + totalprice + ","+ COL2_8 + " = " + paid + ","+ COL2_10 + " = " + cottonmatquantity + ","+ COL2_11 + " = " + cottonmatprice + ","+ COL2_12 + " = " + cottonmattotalprice + ","+ COL2_13 + " = " + colormatquantity + ","+ COL2_14 + " = " + colormatprice + ","+ COL2_15 + " = " + colormattotalprice + ","+ COL2_16 + " = '" + details + "',"+ COL2_17 + " = " + entryprice1 + ","+ COL2_18 + " = " + entryprice2 + ","+ COL2_19 + " = " + totalcottonprice + ","+ COL2_20 + " = " + totalcolorprice +" WHERE " + COL2_1 + " = " + id, null);
+                    +" , "+COL2_7 + " = " + totalprice + ","+ COL2_8 + " = " + paid + ","+ COL2_10 + " = " + cottonmatquantity + ","+ COL2_11 + " = " + cottonmatprice + ","+ COL2_12 + " = " + cottonmattotalprice + ","+  COL2_17 + " = " + entryprice1 + ","+ COL2_19 + " = " + totalcottonprice + " WHERE " + COL2_1 + " = " + id, null);
             c.moveToFirst();
             return true;
         } catch (Exception checks) {
@@ -191,15 +188,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean insertnool(int p_id,float whitequantity,float whiteprice,float colorquantity,float colorprice,float totalprice,float paid,String date,float cottonmatquantity,float cottonmatprice,float cottonmattotalprice,float colormatquantity,float colormatprice,float colormattotalprice,String details,float entryprice1,float entryprice2, float totalcottonprice, float totalcolorprice) {
+    public boolean insertnool(int p_id,float whitequantity,float whiteprice,float totalprice,float paid,String date,float cottonmatquantity,float cottonmatprice,float cottonmattotalprice,float entryprice1, float totalcottonprice) {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
             ContentValues contentValue = new ContentValues();
             contentValue.put(COL2_2, p_id);
             contentValue.put(COL2_3, whitequantity);
             contentValue.put(COL2_4, whiteprice);
-            contentValue.put(COL2_5, colorquantity);
-            contentValue.put(COL2_6, colorprice);
+
             contentValue.put(COL2_7, totalprice);
             contentValue.put(COL2_8, paid);
             contentValue.put(COL2_9, date);
@@ -207,14 +203,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             contentValue.put(COL2_10, cottonmatquantity);
             contentValue.put(COL2_11, cottonmatprice);
             contentValue.put(COL2_12, cottonmattotalprice);
-            contentValue.put(COL2_13, colormatquantity);
-            contentValue.put(COL2_14, colormatprice);
-            contentValue.put(COL2_15, colormattotalprice);
-            contentValue.put(COL2_16, details);
+
             contentValue.put(COL2_17, entryprice1);
-            contentValue.put(COL2_18, entryprice2);
+
             contentValue.put(COL2_19, totalcottonprice);
-            contentValue.put(COL2_20, totalcolorprice);
+
 
 
             try {
@@ -290,7 +283,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor raw2() {
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM " + TABLE3_NAME , new String[]{});
+        Cursor res = db.rawQuery("SELECT nool.ID,nool.P_ID,party.NAME,party.MOBILE,nool.COTTONQUANTITY,nool.COTTONPRICE,nool.TOTALCOTTONPRICE,nool.COTTONMATQUANTITY,nool.COTTONMATPRICE,nool.COTTONMATTOTALPRICE,nool.ENTRYPRICE1,nool.TOTALPRICE,nool.PAID,nool.DATE FROM nooltable as nool, partytable as party where party.ID=nool.P_ID", new String[]{});
 
         return res;
     }
