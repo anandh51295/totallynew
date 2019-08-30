@@ -78,7 +78,7 @@ public class NoolAdopter extends RecyclerView.Adapter<NoolAdopter.ViewHolder> {
                 viewHolder.ep1.setText("மு.பாக்கி(-): "+String.valueOf(tep1));
                 viewHolder.ep1.setTextColor(Color.MAGENTA);
             }else{
-                viewHolder.ep1.setText("மு.பாக்கி(+): "+String.valueOf(tep1));
+                viewHolder.ep1.setText("மு.இருப்பு ( + ): "+String.valueOf(tep1));
             }
 
             mtot1=Math.abs(twp)+ tep1;
